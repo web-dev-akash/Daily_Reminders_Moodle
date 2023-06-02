@@ -113,31 +113,31 @@ const sendReminders = async () => {
   };
   remindersData.push(obj1);
 
-  // const body = {
-  //   broadcast_name: "classReminders",
-  //   receivers: remindersData,
-  //   template_name: "reminders",
-  // };
+  const body = {
+    broadcast_name: "classReminders",
+    receivers: remindersData,
+    template_name: "reminders",
+  };
 
-  // const options = {
-  //   method: "POST",
-  //   headers: {
-  //     Authorization: `Bearer ${token}`,
-  //     "Content-Type": "text/json",
-  //   },
-  //   body: JSON.stringify(body),
-  // };
-  // fetch(`${watiAPI}/api/v1/sendTemplateMessages`, options)
-  //   .then((res) => res.json())
-  //   .then((res) => {
-  //     console.log(res);
-  //   });
+  const options = {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "text/json",
+    },
+    body: JSON.stringify(body),
+  };
+  fetch(`${watiAPI}/api/v1/sendTemplateMessages`, options)
+    .then((res) => res.json())
+    .then((res) => {
+      console.log(res);
+    });
 
   return remindersData;
 };
 
 cron.schedule(
-  "15 12 * * 1-6",
+  "35 12 * * 1-6",
   async () => {
     await sendReminders();
     console.log("Reminders sent successfully for today");
