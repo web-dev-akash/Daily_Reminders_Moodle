@@ -137,7 +137,7 @@ const sendReminders = async () => {
 };
 
 cron.schedule(
-  "35 12 * * 1-6",
+  "40 12 * * 1-6",
   async () => {
     await sendReminders();
     console.log("Reminders sent successfully for today");
